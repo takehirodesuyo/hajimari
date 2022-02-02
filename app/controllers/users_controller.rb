@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+# []内の処理の前に、第一引数を実行する
+  before_action :logged_in_user, only: [:edit, :update]
+  before_action :corrent_user, only: [:edit, :update]
   def show
     @user = User.find(params[:id])
   end
@@ -36,5 +39,18 @@ end
       # permitメソッドは:name, :email, :password, :password_confirmation以外の情報は受け付けない
 		  params.require(:user).permit(:name, :email, :password, :password_confirmation)
 	  end
+
+    def logged_in_user
+      # logged_in?はsessionhelperで定義済み
+      unless logged_in?
+        flash[:danger] = "ログインしてください"
+        redirect_to login_url
+      end
+    end
+
+    def corrent_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless @user == current_user
+    end
 
 end
