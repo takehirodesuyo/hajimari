@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_action :corrent_user, only: [:edit, :update]
   def show
     @user = User.find(params[:id])
+    # ユーザーとリレーションのあるツイート表示
+    @tweets = @user.tweets
   end
 
   def new
