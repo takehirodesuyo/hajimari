@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    @tweet = Tweet.new
   end
 
   def help
