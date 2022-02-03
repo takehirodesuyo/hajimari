@@ -42,14 +42,7 @@ end
 		  params.require(:user).permit(:name, :email, :password, :password_confirmation)
 	  end
 
-    def logged_in_user
-      # logged_in?はsessionhelperで定義済み
-      unless logged_in?
-        flash[:danger] = "ログインしてください"
-        redirect_to login_url
-      end
-    end
-
+   
     def corrent_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless  current_user?(@user)
