@@ -14,6 +14,24 @@
                 <% end %>
             </p>
         </section>
+
+        <section>
+            <div class="stats">
+                <a href="<%= following_user_path(@user) %>">
+                    <strong id="follower" class="stat">
+                    <%= @user.follower.count %>
+                    </strong>
+                    フォロー
+                </a>
+                <a href="<%= followers_user_path(@user) %>">
+                    <strong id="followed" class="stat">
+                    <%= @user.followed.count %>
+                    </strong>
+                    フォロワー
+                </a>
+            </div>
+        </section>
+
     </aside>
     <div class="col-md-8">
     <% if @user.tweets.any? %>
