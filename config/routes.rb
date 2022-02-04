@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'help' => "static_pages#help"
   get 'about' => "static_pages#about"
   get 'contact' => "static_pages#contact"
-
+  
   # ログイン機能実装
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
@@ -22,5 +22,11 @@ Rails.application.routes.draw do
   end
 
   resources :tweets, only: [:create, :edit, :update, :destroy]
+  
+  resources :tweets do
+    resource :likes, only: [:create, :destroy]
+  end
+
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

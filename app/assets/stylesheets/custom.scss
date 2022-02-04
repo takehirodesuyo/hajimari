@@ -106,7 +106,7 @@ footer {
   a {
     color: $gray;
     &:hover {
-      color: $gray-darker;
+      color: white;
     }
   }
   small {
@@ -195,4 +195,17 @@ aside {
 
 .users.follow {
   padding: 0;
+}
+
+
+.header_main {
+  background-color: #87ceeb;
+}
+
+.main_color{
+  background-color: #87cefa;
+}
+
+.home_color{
+  background-color: #afeeee;
 }

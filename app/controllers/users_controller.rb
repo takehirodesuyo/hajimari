@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 # []内の処理の前に、第一引数を実行する
   before_action :logged_in_user, only: [:edit, :update, :following, :followers]
   before_action :corrent_user, only: [:edit, :update]
+  
   def show
     @user = User.find(params[:id])
     # ユーザーとリレーションのあるツイート表示
