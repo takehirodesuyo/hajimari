@@ -31,4 +31,8 @@ validates :email, presence: true, length: { maximum: 255 },
     def following?(user)
         following_user.include?(user)
     end
+
+    def self.search(search)
+        search ? where('id LIKE ?', "%#{search}%") : all
+end
 end
