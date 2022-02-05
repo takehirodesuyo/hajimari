@@ -2,6 +2,7 @@
   <div class="row">
     <aside class="col-md-4">
       <section class="user_info">
+      <h1>名前</h1>
         <h1><%= current_user.name %></h1>
         <p><%= link_to "プロフィールを見る", current_user %></p>
         <p><%= current_user.tweets.count %> ツイート </p>
@@ -22,7 +23,7 @@
           <% end %>
           
           <div class="field">
-            <%= f.text_area :content, required: true, placeholder: "こんにちは" %>
+            <%= f.text_area :content, required: true, placeholder: "" %>
           </div>
           <%= f.submit "投稿", class: "btn btn-primary" %>
         <% end %>
@@ -34,8 +35,7 @@
       </section>
     </aside>
     
-    
-     <div class="col-md-8">
+     <div class="col-md-8 posts_color">
     <% if @tweets.any? %>
         <%= will_paginate @tweets %>
         <ol class="tweets">
@@ -44,10 +44,11 @@
                     <span class="user"><%= link_to tweet.user.name, tweet.user %></span>
                     <span class="content"><%= tweet.content %></span>
                     <span class="timestamp">
-                        投稿日 <%= time_ago_in_words(tweet.created_at) %> 前
+                        投稿日 <p><%= tweet.created_at.to_s(:datetime) %></p>
                         <% if current_user?(tweet.user) %>
                           <%= link_to "編集", edit_tweet_path(tweet) %>
                           <%= link_to "削除", tweet, method: :delete, data: { confirm: "削除しますか?" } %>
+                          
                         <% end %>
                     </span>
 
@@ -64,11 +65,21 @@
 <% else %>
   <div class="center jumbotron home_color">
     <h1>コメントを投稿しよう</h1>
-
-    <h2>
+<br>
+<br>
+    <h3>
       新規登録 ↓
-    </h2>
+    </h3>
+    <br>
+    <br>
 
     <%= link_to "新規登録", signup_path, class: "btn btn-lg btn-primary" %>
+    <br>
+    <br>
+    <br>
+
+    <%# <img src="/assets/12445_color.png"> %>
+    <%= image_tag '12445_color.png', :size => '200x160'%>
+
   </div>
 <% end %>

@@ -3,13 +3,13 @@
   <%# ログインに関しては、sessionモデルが存在しないのでurlを指定する必要がある %>
     <%= form_for(:session, url: login_path) do |f| %>
 
-      <%= f.label :email %>
+      <%= f.label :メールアドレス %>
       <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.label :password %>
+      <%= f.label :パスワード %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <%= f.submit "ログイン", class: "btn btn-primary" %>
     <% end %>
 
     <p>初めてですか？ <%= link_to "いますぐサインアップ！", signup_path %></p>
