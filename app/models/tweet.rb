@@ -6,7 +6,9 @@ class Tweet < ApplicationRecord
     validates :content, presence: true, length: { maximum: 140 }
 
 
-    
+    def self.search(search)
+        search ? where('id LIKE ?', "%#{search}%") : all
+    end
 
    
 end
